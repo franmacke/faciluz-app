@@ -1,0 +1,17 @@
+import { AccountProps } from "./UserProps";
+
+export interface JobProps {
+    "job_id": number,
+    "priority": string,
+    "shop": string,
+    "category": Array<string>,
+    "active": boolean,
+    "description": string,
+    "date_created": string,
+    "date_scheduled": string | null,
+    "date_completed": string | null,
+    "complaint": number | null,
+    "client": null | AccountProps,
+    "worker": null | AccountProps,
+    "creator": null | AccountProps
+}
