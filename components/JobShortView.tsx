@@ -1,16 +1,18 @@
 import { Text, View } from "@/components/Themed";
-import { stringToDate } from "@/constants/Utils";
 import { JobProps } from "@/props/JobProps";
-import { StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
+import { StyleSheet, Pressable } from "react-native";
+
 
 export const JobShortView = (job: JobProps) => {
-  console.log(typeof job.date_created)
+
+  const router = useRouter()
 
   return (
-    <View style={styles.container}>
-      <Text>{job.job_id}</Text>
-      <Text>{stringToDate(job.date_created).toDateString()}</Text>
-    </View>
+    <Pressable style={styles.container} onPress={() => router.push({pathname: "/job/", params: { id: job.job_id }})}>
+      <Text>ID {job.job_id}</Text>
+      <Text>{job.category}</Text>
+    </Pressable>
   );
 };
 
@@ -20,7 +22,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",
-    width: "100%"
+    width: "100%",
+    minHeight: 50,
   },
 });
 

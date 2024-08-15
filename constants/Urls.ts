@@ -1,4 +1,4 @@
-const BASE_URL = 'https://04d5-181-167-7-182.ngrok-free.app/api/';
+const BASE_URL = 'http://127.0.0.1:8000/api/';
 
 export default {
     jobs: {

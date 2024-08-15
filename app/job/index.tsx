@@ -1,13 +1,13 @@
-import { Tabs } from "expo-router";
+import { Text, View } from "@/components/Themed";
+import { useLocalSearchParams } from "expo-router";
 
+export default function JobScreen() {
 
+    const params = useLocalSearchParams();
 
-export default function TabLayout() {
     return (
-        <Tabs>
-            <Tabs.Screen name="index"
-                options={{ title: 'Trabajo' }}
-            />
-        </Tabs>
-    )
+        <View>
+            <Text>Job Screen { params.id }</Text>
+        </View>
+    );
 }

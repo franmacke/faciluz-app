@@ -10,7 +10,6 @@ export const useFetch = <T> (url: string, options: RequestInit = {}) => {
         try {
             const res = await fetch(url, {
                 headers: {
-                    "ngrok-skip-browser-warning": "69420",
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                 },
