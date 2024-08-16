@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet, View } from 'react-native';
+import { Text } from '@/components/Themed';
 import Urls from '@/constants/Urls';
 import { useFetch } from '@/hooks/useFetch';
 import { JobProps } from '@/props/JobProps';
@@ -21,7 +21,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

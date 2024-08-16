@@ -13,5 +13,15 @@ export interface JobProps {
     "complaint": number | null,
     "client": null | AccountProps,
     "worker": null | AccountProps,
-    "creator": null | AccountProps
+    "creator": null | AccountProps,
+    "state_history": Array<State>
+}
+
+export interface State {
+    "id": number,
+    "creator": AccountProps,
+    "created": string,
+    "status": string,
+    "substatus": string,
+    "description": string
 }
