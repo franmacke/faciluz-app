@@ -18,3 +18,4 @@ export interface AccountProps {
     "phone_number": string,
     "date_created": Date
 }
+

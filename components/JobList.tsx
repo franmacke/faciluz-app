@@ -11,7 +11,7 @@ export default function JobList({ jobs }: { jobs: Array<JobProps> | null }) {
             keyExtractor={(item) => item.job_id.toString()}
             contentContainerStyle={styles.contentContainer}
             ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: "grey" }} />}
-            style={{ width: "100%", maxWidth: 500}}
+            style={{ width: "100%", maxWidth: 500 }}
             
         />
     )
@@ -19,11 +19,8 @@ export default function JobList({ jobs }: { jobs: Array<JobProps> | null }) {
 
 const styles = StyleSheet.create({
     contentContainer: {
-        gap: 10,
-        maxWidth: 500,
         width: "100%",
         alignItems: "center",
         justifyContent: "space-between",
-        flex: 1,
     },
 });
