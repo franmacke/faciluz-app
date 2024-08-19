@@ -13,8 +13,9 @@ export default {
     jobs: {
         active_jobs: BASE_URL + 'jobs/active/',
         archived_jobs: BASE_URL + 'jobs/archived/',
+        materials: BASE_URL + 'jobs/materials/',
     },
     clients: {
         list: BASE_URL + "profiles/clients/",
-    }
+    },
 }

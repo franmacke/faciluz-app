@@ -52,7 +52,10 @@ function RootLayoutNav() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(admin)"  options={{ headerShown: false }} />
+        <Stack.Screen name="(worker)" options={{ headerShown: false }} />
         <Stack.Screen name="job"      options={{ headerShown: false }}/>
+        <Stack.Screen name="workflow" options={{ headerShown: false }}/>
+
       </Stack>
     </ThemeProvider>
   );
