@@ -13,7 +13,6 @@ export default function TabLayout() {
     return (
         <Tabs
             screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
                 headerShown: useClientOnlyValue(false, true),
                 headerRight: () => <Link href={"/(admin)"} >Switch</Link>,
             }}

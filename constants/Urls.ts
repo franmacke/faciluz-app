@@ -6,7 +6,8 @@ if (Platform.OS == 'web') {
     BASE_URL = 'http://127.0.0.1:8000/api/';
 }
 else {
-    BASE_URL = "https://2dc6-181-110-67-107.ngrok-free.app/api/";
+    BASE_URL = "https://8e55-181-167-7-182.ngrok-free.app/api/";
+
 }
 
 export default {

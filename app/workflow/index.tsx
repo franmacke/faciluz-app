@@ -3,12 +3,17 @@ import { Text, View } from "@/components/Themed";
 import Urls from "@/constants/Urls";
 import { useFetch } from "@/hooks/useFetch";
 import { JobProps } from "@/props/JobProps";
-import { useLocalSearchParams } from "expo-router";
+import { Link, Redirect, useLocalSearchParams } from "expo-router";
 import { StyleSheet } from "react-native";
 
 
 export default function WorkflowScreen() {
     const params = useLocalSearchParams();
+
+    if (!params.id) {
+        return <Redirect href={"/(worker)/"} />
+    }
+
     const { response, error, loading } = useFetch<JobProps>(Urls.jobs.active_jobs + params.id);
 
     return (
