@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
+import { View } from 'react-native';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -55,7 +56,6 @@ function RootLayoutNav() {
         <Stack.Screen name="(worker)" options={{ headerShown: false }} />
         <Stack.Screen name="job"      options={{ headerShown: false }}/>
         <Stack.Screen name="workflow" options={{ headerShown: false }}/>
-
       </Stack>
     </ThemeProvider>
   );

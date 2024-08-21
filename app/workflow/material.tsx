@@ -12,6 +12,7 @@ export default function MaterialsScreen() {
     const { response, error, loading } = useFetch<Array<MaterialProps>>(Urls.jobs.materials + "?job=" + JOB_ID);
 
     return (
+      <View style={{ justifyContent: "center", alignItems: "center", flex: 1}}>
         <View style={styles.container}>
             { loading && <Text>Loading...</Text>}
             { error && <Text>Error: {error.message}</Text>}
@@ -20,13 +21,14 @@ export default function MaterialsScreen() {
                 <Text>No tiene materiales</Text> 
             } 
         </View>
+      </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center',
+      width: "100%",
     },
     message: {
       textAlign: 'center',

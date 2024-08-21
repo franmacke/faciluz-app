@@ -1,43 +1,38 @@
 import { MaterialProps } from "@/props/MaterialProps";
-import { Text, View } from "./Themed";
-import { Image } from "expo-image";
-import { ScrollView, StyleSheet } from "react-native";
+import { FlatList, Platform, StyleSheet } from "react-native";
+import { MaterialView } from "./MaterialView";
 
 
 
-
-export default function MaterialList ({ materialList }: {materialList: Array<MaterialProps>}) {
+export default function MaterialList ({ materialList }: { materialList: Array<MaterialProps> }) {
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            {materialList.map(material => (
-                <View key={material.material_id} style={styles.imageContainer}>
-                    <Image
-                        style={styles.image}
-                        source={material.material_url}
-                        contentFit="cover"
-                        />
-                    <Text>{material.upload_date}</Text>
-                    <Text>{material.uploader.first_name} {material.uploader.last_name}</Text>
-                </View>
-            ))}           
-        </ScrollView>
+        <FlatList 
+            data={materialList}
+            renderItem={({item}) => <MaterialView material={item} />}
+            keyExtractor={(item) => item.material_id.toString()}
+            style={styles.container}
+            contentContainerStyle={[
+                styles.contentContainer, 
+                Platform.OS === "web" && styles.contentContainerWeb
+            ]}
+        />                     
     )
 }
 
-const styles = StyleSheet.create({
-    image: {
-        flex: 1,
-        height: 300,
-        width: "100%"
+export const styles = StyleSheet.create({
+    container: { 
+        flex: 1, 
+        width: "100%",
+        padding: 10,
     },
-    container: {
-        height: "100%",
-        justifyContent: 'center',
+    contentContainer: { 
+        gap: 10, 
+        width: "100%",
+        paddingBottom: 50
     },
-    imageContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+    contentContainerWeb: {
+        "alignItems": "center",
     }
+    
 })
