@@ -1,7 +1,6 @@
-import { Text, View } from "@/components/Themed";
 import { JobProps } from "@/props/JobProps";
 import { useRouter } from "expo-router";
-import { StyleSheet, Pressable } from "react-native";
+import { Card, View } from "react-native-ui-lib";
 
 export const JobShortView = (job: JobProps) => {
 
@@ -16,22 +15,21 @@ export const JobShortView = (job: JobProps) => {
   }
 
   return (
-    <Pressable style={styles.container} onPress={() => router.push({pathname: "/job/", params: { id: job.job_id }})}>
-      <Text>ID {job.job_id}</Text>
-      <Text>{ getLastState() }</Text>
-    </Pressable>
+    <Card
+      row
+      onPress={() => router.push({pathname: "/job/", params: { id: job.job_id }})}
+    >
+      <Card.Section content={[
+        {text: `ID ${job.job_id}`, text40: true, grey10: true}, 
+        {text: getLastState(), text70: true, grey10: true}
+      ]} 
+        contentStyle={{ flex: 1, width: '100%', justifyContent: 'space-between', gap: 10}}
+        style={{justifyContent: 'space-between', width: '100%', gap: 10}}
+      />
+
+    </Card> 
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
-    minHeight: 75,
-    padding: 10,
-  },
-});
 
 export default JobShortView;

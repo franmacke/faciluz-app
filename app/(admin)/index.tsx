@@ -1,27 +1,18 @@
-import { StyleSheet, View } from 'react-native';
-import { Text } from '@/components/Themed';
 import Urls from '@/constants/Urls';
 import { useFetch } from '@/hooks/useFetch';
 import { JobProps } from '@/props/JobProps';
 import JobList from '@/components/JobList';
+import { LoaderScreen, Text, View } from 'react-native-ui-lib';
 
 export default function HomeScreen() {
 
   const { response, error, loading } = useFetch<Array<JobProps>>(Urls.jobs.active_jobs);
 
   return (
-    <View style={styles.container}>
-      { loading && <Text>Loading...</Text> }
+    <View center flex width={"100%"}>
+      { loading && <LoaderScreen message='Cargando' /> }
       { error && <Text>{ error.message }</Text> }
       <JobList jobs={response} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
