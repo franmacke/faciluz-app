@@ -15,19 +15,20 @@ export const JobShortView = (job: JobProps) => {
   }
 
   return (
-    <Card
-      row
-      onPress={() => router.push({pathname: "/job/", params: { id: job.job_id }})}
-    >
-      <Card.Section content={[
-        {text: `ID ${job.job_id}`, text40: true, grey10: true}, 
-        {text: getLastState(), text70: true, grey10: true}
-      ]} 
-        contentStyle={{ flex: 1, width: '100%', justifyContent: 'space-between', gap: 10}}
-        style={{justifyContent: 'space-between', width: '100%', gap: 10}}
-      />
-
-    </Card> 
+      <Card 
+        flex
+        width={"100%"}
+        style={{width: '100%', padding: 10}}
+        onPress={() => router.push({pathname: "/job/", params: { id: job.job_id }})}
+      >
+        <Card.Section content={[
+          {text: `ID ${job.job_id}`, text40: true, grey10: true}, 
+          {text: getLastState(), text70: true, grey10: true}
+        ]} 
+          contentStyle={{ width: "100%", justifyContent: 'space-between', flexDirection: "row"}}
+          style={{justifyContent: 'space-between', width: '100%', gap: 10}}
+        />
+      </Card> 
   );
 };
 

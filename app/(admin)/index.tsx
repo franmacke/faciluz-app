@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const { response, error, loading } = useFetch<Array<JobProps>>(Urls.jobs.active_jobs);
 
   return (
-    <View center flex width={"100%"}>
+    <View center flex width={"100%"} padding-5>
       { loading && <LoaderScreen message='Cargando' /> }
       { error && <Text>{ error.message }</Text> }
       <JobList jobs={response} />
