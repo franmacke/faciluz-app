@@ -1,7 +1,6 @@
 import { MaterialProps } from "@/props/MaterialProps";
 import { useState } from "react";
 import { Button, Card, Image, Modal, View } from "react-native-ui-lib";
-import object from "react-native-ui-lib/src/style/colorName";
 
 export function MaterialView({ material }: { material: MaterialProps; }) {
     
@@ -25,7 +24,7 @@ export function MaterialView({ material }: { material: MaterialProps; }) {
                     {text: getDate(material.upload_date), text90: true, grey10: true}
                 ]}
                 contentStyle={{ width: "100%", justifyContent: 'space-between' }}
-                style={{justifyContent: 'space-between', width: '100%', gap: 10}}
+                style={{ justifyContent: 'space-between', width: '100%', gap: 10 }}
                 padding-10
             />
             <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)}>

@@ -2,7 +2,7 @@ import { Job } from "@/components/Job";
 import Urls from "@/constants/Urls";
 import { useFetch } from "@/hooks/useFetch";
 import { JobProps } from "@/props/JobProps";
-import { Link, Redirect, useLocalSearchParams } from "expo-router";
+import { Redirect, useLocalSearchParams } from "expo-router";
 import { StyleSheet } from "react-native";
 import { LoaderScreen, Text, View } from "react-native-ui-lib";
 

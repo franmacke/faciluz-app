@@ -3,7 +3,7 @@ import { ScrollView } from "react-native"
 import { useEffect, useState } from "react"
 import Urls from "@/constants/Urls"
 import { ClientProps } from "@/props/ClientProps"
-import { Card, Text, View, Badge, Image } from "react-native-ui-lib"
+import { Card, Text, View, Badge } from "react-native-ui-lib"
 
 export const Job = (job: JobProps) => {
 
@@ -14,27 +14,28 @@ export const Job = (job: JobProps) => {
             .then(response => response.json())
             .then(data => setClient(data))
     }, [])
+	
 
     return (
         <ScrollView style={{flex: 1, width: "100%", padding: 10, maxWidth: 700 }}>
             <View row flex centerV style={{justifyContent: "space-between"}}>
                 <Text text30 grey10>ID {job.job_id}</Text>
-                <Badge 
-                    label={job.state_history[job.state_history.length - 1].status} 
+                <Badge
+                    label={job.state_history[job.state_history.length - 1].status}
                     backgroundColor="green"
                     size={30}
                     labelStyle={{fontSize: 15}}
                 />
             </View>
-            
+
             <View paddingV-10>
                 <Text text40 grey10>Trabajo</Text>
             </View>
 
             <Card>
-                <Card.Section 
+                <Card.Section
                     content={[
-                        {text: "Descripción", text70BO: true, grey10: true }, 
+                        {text: "Descripción", text70BO: true, grey10: true },
                         {text: job.description}
                     ]}
                     padding-10
@@ -61,7 +62,7 @@ export const Job = (job: JobProps) => {
                     padding-10
                 />
             </Card>
-            
+
             <View paddingV-10>
                 <Text text40>Cliente</Text>
             </View>
@@ -74,11 +75,11 @@ export const Job = (job: JobProps) => {
                     ]}
                     padding-10
                 />
-                <Card.Section 
+                <Card.Section
                     contentStyle={{flex: 1, flexDirection: "row", justifyContent: "space-between"}}
                     content={[
-                        {text: "Direccion", text70BO: true}, 
-                        {text: client?.address.address_name},                    
+                        {text: "Direccion", text70BO: true},
+                        {text: client?.address.address_name},
                     ]}
                     padding-10
                 />

@@ -1,9 +1,7 @@
-// import { Text, View } from "@/components/Themed";
 import Urls from "@/constants/Urls";
 import { useFetch } from "@/hooks/useFetch";
 import { JobProps } from "@/props/JobProps";
 import { WorkFlowShortView } from "@/components/WorkFlowShortView";
-import { StyleSheet } from "react-native";
 import { LoaderScreen, Text, View } from "react-native-ui-lib";
 
 const WORKER_ID = 1;
