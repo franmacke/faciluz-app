@@ -1,43 +1,43 @@
 import { MaterialProps } from "@/props/MaterialProps";
-import { Image } from "expo-image";
-import { Text, View } from "./Themed";
-import { StyleSheet } from "react-native";
+import { useState } from "react";
+import { Button, Card, Image, Modal, View } from "react-native-ui-lib";
+import object from "react-native-ui-lib/src/style/colorName";
 
 export function MaterialView({ material }: { material: MaterialProps; }) {
+    
+    const [modalVisible, setModalVisible] = useState<boolean>(false);
 
     const getDate = (date: string) => {
         return new Date(date).toLocaleDateString() + " " + new Date(date).toLocaleTimeString();
     }
 
     return (
-        <View style={styles.imageContainer}>
-            <Image
-                style={styles.image}
-                source={material.material_url}
-                contentFit="contain"
+        <Card onPress={() => setModalVisible(true)}>
+            <Card.Image
+                source={{ uri: material.material_url }}
+                style={{ width: "100%" }}
+                aspectRatio={16/9}
             />
-            <View style={styles.imageDescription}>
-                <Text>{material.uploader.first_name} {material.uploader.last_name}</Text>
-                <Text>{getDate(material.upload_date)}</Text>
-            </View>
-        </View>
+            <Card.Section 
+                content={[
+                    {text: "Pendiente", text40: true, grey10: true},
+                    {text: `${material.uploader.first_name} ${material.uploader.last_name}`, text70: true, grey10: true},
+                    {text: getDate(material.upload_date), text90: true, grey10: true}
+                ]}
+                contentStyle={{ width: "100%", justifyContent: 'space-between' }}
+                style={{justifyContent: 'space-between', width: '100%', gap: 10}}
+                padding-10
+            />
+            <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
+                <View flex center>
+                    <Image
+                        source={{ uri: material.material_url }}
+                        style={{ width: "100%", objectFit: "contain", height: "100%" }}
+                    />
+                </View>
+                <Button label="Cerrar" onPress={() => setModalVisible(false)} borderRadius={10} margin-10 />
+            </Modal>
+        </Card>
     );
 }
 
-const styles = StyleSheet.create({
-    image: {
-        height: 500,
-        width: 500,
-    },
-    imageContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        maxWidth: 500
-    },
-    imageDescription: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: "100%",
-    }
-})

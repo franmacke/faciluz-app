@@ -16,7 +16,7 @@ export const Job = (job: JobProps) => {
     }, [])
 
     return (
-        <ScrollView style={{flex: 1, width: "100%", padding: 10, maxWidth: 700}}>
+        <ScrollView style={{flex: 1, width: "100%", padding: 10, maxWidth: 700 }}>
             <View row flex centerV style={{justifyContent: "space-between"}}>
                 <Text text30 grey10>ID {job.job_id}</Text>
                 <Badge 
@@ -65,7 +65,7 @@ export const Job = (job: JobProps) => {
             <View paddingV-10>
                 <Text text40>Cliente</Text>
             </View>
-            <Card>
+            <Card marginB-10>
                 <Card.Section
                     contentStyle={{flex: 1, flexDirection: "row", justifyContent: "space-between"}}
                     content={[

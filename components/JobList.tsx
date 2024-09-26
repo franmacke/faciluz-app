@@ -24,10 +24,6 @@ export default function JobList({ jobs }: { jobs: Array<JobProps> | null }) {
 
 const styles = StyleSheet.create({
     contentContainer: {
-        // flexDirection: "row",
         width: "100%",
-        // alignItems: "center",
-        // maxWidth: 700,
-        // flex: 1,
     },
 });

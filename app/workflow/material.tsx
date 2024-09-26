@@ -1,9 +1,10 @@
-import { Text, View } from "@/components/Themed";
+
 import Urls from "@/constants/Urls";
 import { useFetch } from "@/hooks/useFetch";
 import { MaterialProps } from "@/props/MaterialProps";
 import { StyleSheet } from "react-native";
 import MaterialList from "@/components/MaterialList";
+import { LoaderScreen, Text, View } from "react-native-ui-lib";
 
 const JOB_ID = 1;
 
@@ -12,9 +13,9 @@ export default function MaterialsScreen() {
     const { response, error, loading } = useFetch<Array<MaterialProps>>(Urls.jobs.materials + "?job=" + JOB_ID);
 
     return (
-      <View style={{ justifyContent: "center", alignItems: "center", flex: 1}}>
+      <View flex center>
         <View style={styles.container}>
-            { loading && <Text>Loading...</Text>}
+            { loading && <LoaderScreen message="Cargando"/>}
             { error && <Text>Error: {error.message}</Text>}
             { response?.length ? 
                 <MaterialList materialList={response} /> : 

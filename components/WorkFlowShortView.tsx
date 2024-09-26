@@ -1,7 +1,6 @@
 import { JobProps } from "@/props/JobProps";
 import { useRouter } from "expo-router";
-import { Pressable, StyleSheet } from "react-native";
-import { Text } from "./Themed";
+import { Card } from "react-native-ui-lib";
 
 export function WorkFlowShortView(job: JobProps) {
     const router = useRouter();
@@ -15,24 +14,21 @@ export function WorkFlowShortView(job: JobProps) {
     };
 
     return (
-        <Pressable 
-            onPress={() => router.push({ pathname: "/workflow/", params: { id: job.job_id } })}
-            style={styles.container}
+        <Card 
+            flex
+            width={"100%"}
+            style={{width: '100%', padding: 10}}
+            onPress={() => router.push({ pathname: "/workflow/", params: { id: job.job_id }})}
         >
-            <Text>ID {job.job_id}</Text>
-            <Text>{getLastState()}</Text>
-        </Pressable>
+            <Card.Section 
+                content={[
+                        {text: `ID ${job.job_id}`, text40: true, grey10: true}, 
+                        {text: getLastState(), text70: true, grey10: true}
+                    ]} 
+                contentStyle={{ width: "100%", justifyContent: 'space-between', flexDirection: "row"}}
+                style={{justifyContent: 'space-between', width: '100%', gap: 10}}
+            />
+        </Card> 
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-        justifyContent: "space-between",
-        flexDirection: "row",
-        width: "100%",
-        borderWidth: 1,
-        minHeight: 50,
-        padding: 10
-    }
-});
