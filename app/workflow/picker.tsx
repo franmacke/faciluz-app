@@ -1,7 +1,7 @@
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { Button, Colors, Dialog, Image, Text, View } from 'react-native-ui-lib';
+import { Button, Colors, Image, View } from 'react-native-ui-lib';
 
 
 export default function MediaPicker() {
@@ -19,7 +19,6 @@ export default function MediaPicker() {
 		if (!result.canceled) {
 		    setImage(result.assets[0].uri);
 		}
-        
         setUserClosed(result.canceled)
 	};
 
@@ -27,7 +26,6 @@ export default function MediaPicker() {
         router.back()
         console.log("Subir imagen")
     }
-
 
     if (!image && !userClosed) {
         pickImage()
@@ -47,11 +45,11 @@ export default function MediaPicker() {
             <View margin-10>
                 {image &&
                     <Button marginV-5
-                    label="Subir imagen" 
-                    onPress={submitImage} 
-                    borderRadius={10}
-                    text70BL
-                    grey90
+                        label="Subir imagen" 
+                        onPress={submitImage} 
+                        borderRadius={10}
+                        text70BL
+                        grey90
                 />
                 }
                 <Button marginV-5
@@ -63,7 +61,7 @@ export default function MediaPicker() {
                     color={ image ? Colors.grey10 : Colors.white }
                     style={ image ? { borderWidth: 1, borderColor: Colors.primary } : {} }
                 />
-                 <Button
+                <Button
                     label="Cancelar" 
                     onPress={() => router.back()}
                     backgroundColor="transparent"

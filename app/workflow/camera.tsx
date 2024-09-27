@@ -7,6 +7,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function CameraScreen() {
 
+    // https://docs.expo.dev/versions/latest/sdk/navigation-bar/
+
     const [permission, requestPermission] = useCameraPermissions();
     const [cameraVisible, setCameraVisible] = useState<boolean>(true);
     const [image, setImage] = useState<string | null>(null);
@@ -16,7 +18,6 @@ export default function CameraScreen() {
 
     const takePicture = async () => {
         const photo = await cameraRef.current?.takePictureAsync();
-        
 
         if (!photo) {
             return;
@@ -34,8 +35,8 @@ export default function CameraScreen() {
         return (
             <Modal visible={true}>
                 <View flex center>
-                    <Text>We need your permission to show the camera</Text>
-                    <Button label={'Dar permiso'} onPress={requestPermission} />
+                    <Text marginV-10>Se necesitan permisos de la cámara para continuar</Text>
+                    <Button label={'Dar permiso'} onPress={requestPermission} borderRadius={10} />
                 </View>
             </Modal>
         );
