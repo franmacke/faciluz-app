@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
     contentContainer: { 
         gap: 10, 
         width: "100%",
-        paddingBottom: 50
+        paddingBottom: 50,
     },
     contentContainerWeb: {
         "alignItems": "center",

@@ -17,6 +17,7 @@ export function MaterialView({ material }: { material: MaterialProps; }) {
                 style={{ width: "100%" }}
                 aspectRatio={16/9}
             />
+            
             <Card.Section 
                 content={[
                     {text: "Pendiente", text40: true, grey10: true},

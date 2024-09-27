@@ -20,7 +20,6 @@ export default function TabLayout() {
                   title: 'Materiales',
                   tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
                   unmountOnBlur: true,
-                  headerRight: () => (<Link href={'/workflow/upload'}>Subir material</Link>),
                 }} 
             />
             <Tabs.Screen 
@@ -38,6 +37,26 @@ export default function TabLayout() {
                   tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
                   unmountOnBlur: true,
                   href: null
+                }}
+            />
+            <Tabs.Screen 
+                name="camera"
+                options={{
+                  title: 'Cámara',
+                  tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+                  unmountOnBlur: true,
+                  href: null,
+                  tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tabs.Screen 
+                name="picker"
+                options={{
+                  title: 'Elegir de galería',
+                  tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+                  unmountOnBlur: true,
+                  href: null,
+                  tabBarStyle: { display: 'none' }
                 }}
             />
         </Tabs>
