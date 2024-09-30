@@ -1,12 +1,14 @@
 import { Platform } from "react-native";
 
+
 let BASE_URL = '';
 
 if (Platform.OS == 'web') {
     BASE_URL = 'http://127.0.0.1:8000/api/';
 }
 else {
-    BASE_URL = "https://fc9e-181-110-67-107.ngrok-free.app/api/";
+    BASE_URL = "https://4ab0-181-110-67-107.ngrok-free.app" + "/api/";
+    console.log(BASE_URL);
 
 }
 
