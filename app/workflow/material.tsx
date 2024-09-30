@@ -2,41 +2,44 @@
 import Urls from "@/constants/Urls";
 import { useFetch } from "@/hooks/useFetch";
 import { MaterialProps } from "@/props/MaterialProps";
-import { Dimensions, StyleSheet } from "react-native";
 import MaterialList from "@/components/MaterialList";
 import { ActionSheet, FloatingButton, GridList, LoaderScreen, Text, View } from "react-native-ui-lib";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "expo-router";
+import { useWorkflow } from "@/context/WorkflowContext";
 import { MaterialView } from "@/components/MaterialView";
 
-const JOB_ID = 1;
 
 export default function MaterialsScreen() {
 
-	const { response, error, loading } = useFetch<Array<MaterialProps>>(Urls.jobs.materials + "?job=" + JOB_ID);
 	const [actionSheetVisible, setActionSheetVisible] = useState<boolean>(false);
-	const [dimensions, setDimensions] = useState(Dimensions.get('window'));
-
 	const router  = useRouter()
-
-	useEffect(() => {
-		const subscription = Dimensions.addEventListener(
-		  'change',
-		  ({window, screen}) => {
-			setDimensions(screen);
-		  },
-		);
-		return () => subscription?.remove();
-	  });
+	
+	const { jobId } = useWorkflow()
+	const { response, error, loading } = useFetch<Array<MaterialProps>>(Urls.jobs.materials + "?job=" + jobId);
 
     return (
       	<View flex centerH>
 			{ loading && <LoaderScreen message="Cargando"/>}
 			{ error && <Text>Error: {error.message}</Text>}
-			{ response?.length ? 
+			{/* { response?.length ? 
 				<MaterialList materialList={response} /> : 
 				<Text>No tiene materiales</Text> 
-			} 
+			}  */}
+			<View flex centerH style={{ width: "100%", paddingBottom: 50}}>
+				{ response?.length ? 
+					<GridList
+						data={response}
+						renderItem={({ item }) => <MaterialView material={item} />}
+						keyExtractor={(item) => item.material_id.toString()}
+						numColumns={1}
+						style={{ padding: 10, flex: 1, width: "100%",  maxWidth: 500 }}
+						listPadding={10}
+					/> :
+					<Text>No tiene materiales</Text>		
+				}
+			</View>
+
 
 			<FloatingButton
 				visible={true}

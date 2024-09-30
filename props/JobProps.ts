@@ -14,10 +14,10 @@ export interface JobProps {
     "client": null | AccountProps,
     "worker": null | AccountProps,
     "creator": null | AccountProps,
-    "state_history": Array<State>
+    "state_history": Array<StateProps>
 }
 
-export interface State {
+export interface StateProps {
     "id": number,
     "creator": AccountProps,
     "created": string,

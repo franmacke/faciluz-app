@@ -1,4 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import { Alert, Platform } from "react-native";
 import { Card, Colors, ListItem, Text, View } from "react-native-ui-lib";
 
@@ -41,11 +42,11 @@ function OptionView({ icon, text, onPress, color }: OptionProps) {
 
 export default function WorkflowOptionsScreen() {
 
+    const router = useRouter()
+
     const options: Array<OptionProps> = [
-        { icon: "cash", text: "Presupuestar", onPress: () => Alert.alert("Tomar foto")},
-        { icon: "handshake-outline", text: "Coordinar con cliente", onPress: () => Alert.alert("Coordinar") },
-        // { icon: "pause-circle-outline", text: "Pausar trabajo", onPress: () => Alert.alert("Tomar foto") },
-        // { icon: "cancel", text: "Cancelar trabajo", onPress: () => Alert.alert("Cancelar trabajo") },
+        { icon: "cash", text: "Presupuestar", onPress: () => router.push("/workflow/budgeting")},
+        { icon: "handshake-outline", text: "Coordinar con cliente", onPress: () => router.push("/workflow/coordinate")},
     ]
 
     const actions: Array<OptionProps> = [

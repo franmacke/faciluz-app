@@ -12,10 +12,10 @@ export function MaterialView({ material }: { material: MaterialProps; }) {
     }
 
     return (
-        <Card onPress={() => setModalVisible(true)} flex>
+        <Card onPress={() => setModalVisible(true)}>
             <Card.Image
                 source={{ uri: material.material_url }}
-                style={{ width: "100%" }}
+                style={{ width: "100%", maxWidth: 500 }}
                 aspectRatio={16/9}
             />
             
@@ -47,6 +47,7 @@ export function MaterialView({ material }: { material: MaterialProps; }) {
                 </View>
             </Modal>
         </Card>
+
     );
 }
 

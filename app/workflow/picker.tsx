@@ -10,6 +10,10 @@ export default function MediaPicker() {
 
     const router = useRouter();
 
+    const goBack = () => {
+        router.push("/workflow/material")
+    }
+
 	const pickImage = async () => {
 		let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -23,8 +27,8 @@ export default function MediaPicker() {
 	};
 
     const submitImage = () => {
-        router.back()
         console.log("Subir imagen")
+        goBack()
     }
 
     if (!image && !userClosed) {
@@ -53,19 +57,16 @@ export default function MediaPicker() {
                 />
                 }
                 <Button marginV-5
-                    text70BL grey90
                     label="Abrir galería" 
                     onPress={pickImage} 
                     borderRadius={10}
-                    backgroundColor={image ? "transparent" : Colors.$textPrimary}
-                    color={ image ? Colors.grey10 : Colors.white }
-                    style={ image ? { borderWidth: 1, borderColor: Colors.primary } : {} }
+                    outline={ image ? true : false }
                 />
                 <Button
                     label="Cancelar" 
-                    onPress={() => router.back()}
+                    onPress={goBack}
                     backgroundColor="transparent"
-                    text70BL grey10
+                    color={Colors.$outlinePrimary}
                 />
             </View>
         </View>

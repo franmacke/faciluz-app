@@ -25,14 +25,18 @@ export const styles = StyleSheet.create({
         flex: 1, 
         width: "100%",
         padding: 10,
+        backgroundColor: "red",
+        maxWidth: 500,
     },
     contentContainer: { 
         gap: 10, 
         width: "100%",
         paddingBottom: 50,
+        backgroundColor: "blue",
     },
     contentContainerWeb: {
-        "alignItems": "center",
+        alignItems: "center",
+        width: "100%",
     }
     
 })

@@ -42,9 +42,14 @@ export default function CameraScreen() {
         );
     }
 
+    const goBack = () => {
+        router.push("/workflow/material")
+    }
+
     const submitImage = () => {
-        router.back()
         console.log("Subir imagen")
+
+        goBack()
     }
 
     return (
@@ -52,7 +57,7 @@ export default function CameraScreen() {
             { cameraVisible && 
                 <CameraView style={{ flex: 1 }} facing={'back'} ref={cameraRef}>                   
                     <Button 
-                        onPress={() => router.back()} 
+                        onPress={goBack} 
                         iconSource={() => <FontAwesome name="close" size={40} color={Colors.white}/>} 
                         backgroundColor={Colors.$textDefault} 
                         style={{ height: 50, width: 50, borderRadius: 25, position: 'absolute', top: 20, right: 20, flex: 1, alignItems: 'center' }}
@@ -90,18 +95,15 @@ export default function CameraScreen() {
                         <Button 
                             label="Tomar de nuevo" 
                             onPress={() => setCameraVisible(true)}
-                            text70BL grey10
                             margin-5
                             borderRadius={10}
-                            backgroundColor={image ? "transparent" : Colors.$textPrimary}
-                            color={ image ? Colors.grey10 : Colors.white }
-                            style={ image ? { borderWidth: 1, borderColor: Colors.primary } : {} }
+                            outline={ image ? true : false }
                         />
                         <Button 
                             label="Cancelar" 
-                            onPress={() => router.back()}
+                            onPress={goBack}
                             backgroundColor="transparent"
-                            text70BL grey10
+                            color={Colors.$outlinePrimary}
                             margin-5
                         />
                     </View>

@@ -1,11 +1,13 @@
 import BackButton from "@/components/BackButton";
 import TabBarIcon from "@/components/TabBarIcon";
+import { WorkflowProvider } from "@/context/WorkflowContext";
 import { Tabs } from "expo-router";
 
 
 
 export default function TabLayout() {
     return (
+      <WorkflowProvider>
         <Tabs>
             <Tabs.Screen 
                 name="index"
@@ -16,6 +18,15 @@ export default function TabLayout() {
                   headerLeft: () => <BackButton />,
                 }}
                 
+            />
+            <Tabs.Screen 
+                name="states"
+                options={{
+                  title: 'Historial',
+                  tabBarIcon: ({ color }) => <TabBarIcon name="chart-timeline-variant" color={color} />,
+                  unmountOnBlur: true,
+                  headerLeft: () => <BackButton />,
+                }} 
             />
             <Tabs.Screen 
                 name="material"
@@ -36,19 +47,27 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen 
-                name="upload"
+                name="budgeting"
                 options={{
-                  title: 'Subir material',
-                  // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+                  title: 'Presupuestar',
                   unmountOnBlur: true,
-                  href: null
+                  href: null,
+                  tabBarStyle: { display: 'none' }
+                }}
+            />
+            <Tabs.Screen 
+                name="coordinate"
+                options={{
+                  title: 'Coordinar',
+                  unmountOnBlur: true,
+                  href: null,
+                  tabBarStyle: { display: 'none' }
                 }}
             />
             <Tabs.Screen 
                 name="camera"
                 options={{
                   title: 'Cámara',
-                  // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
                   unmountOnBlur: true,
                   href: null,
                   tabBarStyle: { display: 'none' }
@@ -58,12 +77,12 @@ export default function TabLayout() {
                 name="picker"
                 options={{
                   title: 'Elegir de galería',
-                  // tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
                   unmountOnBlur: true,
                   href: null,
                   tabBarStyle: { display: 'none' }
                 }}
             />
         </Tabs>
+      </WorkflowProvider>
     )
 }
