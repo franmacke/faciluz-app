@@ -11,9 +11,9 @@ export default function WorkerHomeScreen() {
     const { response, error, loading } = useFetch<Array<JobProps>>(Urls.jobs.active_jobs + "?worker=" + WORKER_ID);
 
     return (
-        <View center flex width={"100%"} padding-5>
+        <View centerH flexS width={"100%"} padding-5>
             { loading && <LoaderScreen message="Cargando"/>}
-            { error && <Text>{ error.message }</Text> }
+            { error && !response && <Text>{ error.message }</Text> }
             { response && response.map((job) => <WorkFlowShortView key={job.job_id} {...job} />) }
         </View>
     )

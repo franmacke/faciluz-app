@@ -21,7 +21,15 @@ export default function TabLayout() {
                 name="index"
                 options={{
                     title: 'Trabajos',
-                    tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+                    tabBarIcon: ({ color }) => <TabBarIcon name="home-outline" color={color} />,
+                    unmountOnBlur: true
+                }}
+            />
+            <Tabs.Screen
+                name="stats"
+                options={{
+                    title: 'Estadísticas',
+                    tabBarIcon: ({ color }) => <TabBarIcon name="chart-box-outline" color={color} />,
                     unmountOnBlur: true
                 }}
             />

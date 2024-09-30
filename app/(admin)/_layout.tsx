@@ -20,7 +20,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Trabajos',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home-outline" color={color} />,
           unmountOnBlur: true
         }} 
       />
@@ -28,7 +28,7 @@ export default function TabLayout() {
         name="validate"
         options={{
           title: 'Validar',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="check-circle-outline" color={color} />,
         }}
       />
     </Tabs>

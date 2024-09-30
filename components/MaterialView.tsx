@@ -1,5 +1,6 @@
 import { MaterialProps } from "@/props/MaterialProps";
 import { useState } from "react";
+import { Platform } from "react-native";
 import { Button, Card, Image, Modal, View } from "react-native-ui-lib";
 
 export function MaterialView({ material }: { material: MaterialProps; }) {
@@ -11,7 +12,7 @@ export function MaterialView({ material }: { material: MaterialProps; }) {
     }
 
     return (
-        <Card onPress={() => setModalVisible(true)}>
+        <Card onPress={() => setModalVisible(true)} flex>
             <Card.Image
                 source={{ uri: material.material_url }}
                 style={{ width: "100%" }}
@@ -32,10 +33,18 @@ export function MaterialView({ material }: { material: MaterialProps; }) {
                 <View flex center>
                     <Image
                         source={{ uri: material.material_url }}
-                        style={{ width: "100%", objectFit: "contain", height: "100%" }}
+                        style={{ objectFit: "contain", height: "100%", width: "100%", resizeMode: "contain" }}
                     />
                 </View>
-                <Button label="Cerrar" onPress={() => setModalVisible(false)} borderRadius={10} margin-10 />
+                <View centerH padding-10>
+                    <Button 
+                        label="Cerrar" 
+                        onPress={() => setModalVisible(false)} 
+                        borderRadius={10} 
+                        style={{ maxWidth: 500, width: "100%" }}
+                        
+                    />
+                </View>
             </Modal>
         </Card>
     );
