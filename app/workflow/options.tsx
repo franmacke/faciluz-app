@@ -50,7 +50,7 @@ export default function WorkflowOptionsScreen() {
     ]
 
     const actions: Array<OptionProps> = [
-        { icon: "pause-circle-outline", text: "Pausar trabajo", onPress: () => Alert.alert("Tomar foto"), color: Colors.red20 },
+        { icon: "pause-circle-outline", text: "Pausar trabajo", onPress: () => Alert.alert("Pausar trabajo"), color: Colors.red20 },
         { icon: "cancel", text: "Cancelar trabajo", onPress: () => Alert.alert("Cancelar trabajo"), color: Colors.red20 },
     ]
 
@@ -61,6 +61,7 @@ export default function WorkflowOptionsScreen() {
                     {options.map((option, index) => <OptionView key={index} {...option} />)}
                 </Card>
             </View>
+            
             <View flexS centerH padding-10>
                 <Card style={{ maxWidth: 500, width: "100%" }}>
                     {actions.map((option, index) => <OptionView key={index} {...option} />)}

@@ -6,5 +6,6 @@ export interface MaterialProps {
     "material_url": string,
     "upload_date": string,
     "uploader": AccountProps,
-    "job": number
+    "job": number,
+    "type": string
 }

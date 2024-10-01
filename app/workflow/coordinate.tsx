@@ -32,14 +32,15 @@ export default function CoordinateScreen() {
                     <TextField 
                         value={dayjs(date).locale('es').format('dddd DD [de] MMM').replace(/^\w/, (c) => c.toUpperCase()) }
                         editable={false}
-                        text30BL grey10
+                        text30BL
+                        color={Colors.$iconPrimary}
                         onPress={() => setModalVisible(true)}
                         centered
                     />
                     <TextField 
                         value={dayjs(date).locale('es').format('HH:mm A') }
                         editable={false}
-                        text40BL grey20
+                        text40BL grey30
                         onPress={() => setModalVisible(true)}
                         centered
                     />
@@ -70,7 +71,7 @@ export default function CoordinateScreen() {
             <Modal visible={modalVisible}>
                 <View flex backgroundColor={Colors.$backgroundNeutral}>
                     <Modal.TopBar 
-                        title={'Elegir fecha'} 
+                        title={'Elegir fecha y hora'} 
                         cancelIcon={null}
                         doneIcon={null}
                         containerStyle={{ backgroundColor: Colors.$backgroundDefault }}
@@ -90,6 +91,8 @@ export default function CoordinateScreen() {
                                 // @ts-ignore
                                 onChange={(params) => setDate(params.date)}
                                 minDate={dayjs().subtract(1, 'day')}
+                                timePickerDecelerationRate={"fast"}
+                                headerTextStyle={{ color: Colors.$iconPrimary }}
                             /> 
                         </View>
                         <View padding-10 gap-10>
