@@ -1,13 +1,35 @@
 import { MaterialProps } from "@/props/MaterialProps";
 import dayjs from "dayjs";
 import { useState } from "react";
-import { Button, Card, Colors, Image, Modal, Text, View } from "react-native-ui-lib";
-import { OverlayIntensityType } from "react-native-ui-lib/src/components/overlay";
+import { Button, Card, Colors, Image, Modal, View } from "react-native-ui-lib";
 
-function InternalTag({ text }: { text: string }) {
+
+function ValidationTag({ validator, validate_date }: MaterialProps) {
+
+    if (validator) {
+        return (
+            <View flex padding-10 backgroundColor={Colors.green60} style={{ borderBottomEndRadius: 10, borderBottomLeftRadius: 10 }}>
+                <Card.Section
+                    content={[
+                        { text: `Validado por ${validator.first_name} ${validator.last_name}`, text70BO: true, green10: true },
+                        { text: dayjs(validate_date).locale('es').format("HH:mm [del dia] DD [de] MMMM, YYYY"), text90: true, grey30: true }
+                    ]}
+                    contentStyle={{ width: "100%", justifyContent: 'space-between' }}
+                    style={{ justifyContent: 'space-between', width: '100%' }}
+                />
+            </View>
+        )
+    }
+
     return (
-        <View top right absR style={{ backgroundColor: "black", padding: 5, borderRadius: 5 }}>
-            <Text style={{ color: "white" }}>{text}</Text>
+        <View flex padding-10 backgroundColor={Colors.yellow50} style={{ borderBottomEndRadius: 10, borderBottomLeftRadius: 10 }}>
+            <Card.Section
+                content={[
+                    { text: "Pendiente de aprobacion", text70BO: true, grey10: true }
+                ]}
+                contentStyle={{ width: "100%", justifyContent: 'space-between'}}
+                style={{ justifyContent: 'space-between', width: '100%' }}
+            />
         </View>
     )
 }
@@ -21,32 +43,20 @@ export function MaterialView({ material }: { material: MaterialProps; }) {
         <Card onPress={() => setModalVisible(true)}>
             <Card.Image
                 source={{ uri: material.material_url }}
-                style={{ width: "100%", maxWidth: 500 }}
+                style={{ width: "100%", maxWidth: 700 }}
                 aspectRatio={16/9}
-                customOverlayContent={<InternalTag text={material.type}/>}
-                overlayType={Image.overlayTypes.BOTTOM}
-                overlayIntensity={OverlayIntensityType.LOW}
             />
 
             <Card.Section 
                 content={[
-                    {text: "Pendiente", text40: true, grey10: true},
-                    {text: `${material.uploader.first_name} ${material.uploader.last_name}`, text70: true, grey10: true},
-                    {text: dayjs(material.upload_date).locale('es').format("DD [de] MMMM, YYYY [a las] HH:mm"), text90: true, grey10: true}
+                    { text: `${material.uploader.first_name} ${material.uploader.last_name}`, text70BL: true, grey10: true },
+                    { text: dayjs(material.upload_date).locale('es').format("HH:mm [del dia] DD [de] MMMM, YYYY"), text90: true, grey40: true }
                 ]}
                 contentStyle={{ width: "100%", justifyContent: 'space-between' }}
                 style={{ justifyContent: 'space-between', width: '100%', gap: 10 }}
                 padding-10
             />
-            <View flex padding-10 backgroundColor={Colors.yellow50} style={{ borderBottomEndRadius: 10, borderBottomLeftRadius: 10 }}>
-                <Card.Section
-                    content={[
-                        {text: "Pendiente de aprobacion", text80: true, grey10: true}
-                    ]}
-                    contentStyle={{ width: "100%", justifyContent: 'space-between'}}
-                    style={{ justifyContent: 'space-between', width: '100%' }}
-                />
-            </View>
+            <ValidationTag {...material} />
             <Modal visible={modalVisible} onRequestClose={() => setModalVisible(false)}>
                 <View flex center>
                     <Image

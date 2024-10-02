@@ -22,18 +22,14 @@ export default function MaterialsScreen() {
       	<View flex centerH>
 			{ loading && <LoaderScreen message="Cargando"/>}
 			{ error && <Text>Error: {error.message}</Text>}
-			{/* { response?.length ? 
-				<MaterialList materialList={response} /> : 
-				<Text>No tiene materiales</Text> 
-			}  */}
-			<View flex centerH style={{ width: "100%", paddingBottom: 50}}>
+			<View flex centerH style={{ width: "100%", marginBottom: 50}}>
 				{ response?.length ? 
 					<GridList
 						data={response}
 						renderItem={({ item }) => <MaterialView material={item} />}
 						keyExtractor={(item) => item.material_id.toString()}
 						numColumns={1}
-						style={{ padding: 10, flex: 1, width: "100%",  maxWidth: 500 }}
+						style={{ padding: 10, flex: 1, width: "100%",  maxWidth: 700 }}
 						listPadding={10}
 					/> :
 					<Text>No tiene materiales</Text>		
@@ -43,7 +39,7 @@ export default function MaterialsScreen() {
 
 			<FloatingButton
 				visible={true}
-				button={{ label: "Subir material", onPress: () => setActionSheetVisible(true) }}
+				button={{ label: "+", onPress: () => setActionSheetVisible(true) }}
 				bottomMargin={20}
 			/>
 			<ActionSheet 

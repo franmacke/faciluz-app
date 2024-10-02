@@ -7,5 +7,7 @@ export interface MaterialProps {
     "upload_date": string,
     "uploader": AccountProps,
     "job": number,
-    "type": string
+    "type": string,
+    "validator": AccountProps | null,
+    "validate_date": string | null,
 }
