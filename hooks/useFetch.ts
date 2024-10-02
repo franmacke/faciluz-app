@@ -21,6 +21,7 @@ export const useFetch = <T> (url: string, options: RequestInit = {}) => {
             setLoading(false);
         } catch (error) {
             setError(error as Error);
+            setLoading(false);
         }
     };
 
