@@ -2,7 +2,6 @@
 import Urls from "@/constants/Urls";
 import { useFetch } from "@/hooks/useFetch";
 import { MaterialProps } from "@/props/MaterialProps";
-import MaterialList from "@/components/MaterialList";
 import { ActionSheet, FloatingButton, GridList, LoaderScreen, Text, View } from "react-native-ui-lib";
 import { useState } from "react";
 import { useRouter } from "expo-router";

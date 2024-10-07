@@ -3,9 +3,17 @@ import { ScrollView } from "react-native"
 import { Card, View, Colors, Avatar } from "react-native-ui-lib"
 import dayjs from "dayjs"
 import ClientInfo from "./JobComponents/ClientInfo"
+import { useEffect } from "react"
+import CurrentStatus from "./JobComponents/CurrentStatus"
+
+
 
 
 export const Job = (job: JobProps) => {
+
+    useEffect(() => {
+        console.log(job)
+    }, [])
 
     return (
         <ScrollView style={{flex: 1, width: "100%", padding: 10, maxWidth: 700 }}>
@@ -47,13 +55,15 @@ export const Job = (job: JobProps) => {
                 </View>
                 <Card.Section 
                     content={[
-                        {text: "Esto es una descripcion un poco mas larga de lo que hay que hacer", text70: true, grey20: true}
+                        {text: job.description, text70: true, grey20: true}
                     ]}
                     paddingH-10
                     paddingB-10
                 />
             </Card>
             
+            <CurrentStatus state_history={job.state_history} />
+
             <Card marginV-10 >
                 <View flex row centerV gap-10 padding-10>
                     <Avatar 

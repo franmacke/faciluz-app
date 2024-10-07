@@ -16,7 +16,6 @@ export function WorkFlowShortView(job: JobProps) {
     return (
         <Card 
             center
-            width={"100%"}
             style={{width: '100%', padding: 10, maxWidth: 500, maxHeight: 200}}
             onPress={() => router.push({ pathname: "/workflow/", params: { id: job.job_id }})}
         >

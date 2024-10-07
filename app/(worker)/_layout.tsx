@@ -1,3 +1,4 @@
+import BackButton from "@/components/BackButton";
 import TabBarIcon from "@/components/TabBarIcon";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import Colors from "@/constants/Colors";
@@ -31,6 +32,16 @@ export default function TabLayout() {
                     title: 'Estadísticas',
                     tabBarIcon: ({ color }) => <TabBarIcon name="chart-box-outline" color={color} />,
                     unmountOnBlur: true
+                }}
+            />
+            <Tabs.Screen
+                name="pool"
+                options={{
+                    title: 'Pedir trabajo',
+                    unmountOnBlur: true,
+                    href: null,
+                    tabBarStyle: { display: "none"},
+                    headerLeft: () => <BackButton />
                 }}
             />
         </Tabs>
