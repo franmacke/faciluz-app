@@ -37,11 +37,19 @@ export default function TabLayout() {
             <Tabs.Screen
                 name="pool"
                 options={{
-                    title: 'Pedir trabajo',
                     unmountOnBlur: true,
                     href: null,
+                    headerShown: false,
                     tabBarStyle: { display: "none"},
-                    headerLeft: () => <BackButton />
+                }}
+            />
+            <Tabs.Screen
+                name="match"
+                options={{
+                    unmountOnBlur: true,
+                    href: null,
+                    headerShown: false,
+                    tabBarStyle: { display: "none"},
                 }}
             />
         </Tabs>

@@ -5,8 +5,7 @@ import dayjs from "dayjs"
 import ClientInfo from "./JobComponents/ClientInfo"
 import { useEffect } from "react"
 import CurrentStatus from "./JobComponents/CurrentStatus"
-
-
+import JobDescription from "./JobDescription"
 
 
 export const Job = (job: JobProps) => {
@@ -17,51 +16,8 @@ export const Job = (job: JobProps) => {
 
     return (
         <ScrollView style={{flex: 1, width: "100%", padding: 10, maxWidth: 700 }}>
-            <Card>
-                <View row spread paddingH-10 paddingT-10 centerV>
-                    <Card.Section
-                        content={[
-                            {text: "Trabajo", text50BL: true, grey0: true },
-                        ]}
-                    />
-                    <Card.Section
-                        content={[
-                            {text: "ID " + job.job_id.toString(), text60: true, grey30: true}
-                        ]}
-                    />
-                </View>
-                <Card.Section 
-                    content={[
-                        {text: dayjs(job.date_created).locale('es').format("DD [de] MMMM, YYYY [|] HH:mm"), text70: true, grey40: true}
-                    ]}
-                    paddingH-10
-                />
-                <View row marginV-10 gap-10 marginH-10>
-                    <Card.Section 
-                        content={[
-                            {text: job.priority, text70: true, yellow10: true},
-                        ]}
-                        padding-5
-                        style={{backgroundColor: Colors.yellow60, borderRadius: 10, borderColor: Colors.yellow10, borderWidth: 1}}
-                    />
-                    <Card.Section 
-                        content={[
-                            {text: job.priority, text70: true, yellow10: true},
-                        ]}
-                        padding-5
-                        style={{backgroundColor: Colors.yellow60, borderRadius: 10, borderColor: Colors.yellow10, borderWidth: 1}}
-                    />
+            <JobDescription {...job} />
 
-                </View>
-                <Card.Section 
-                    content={[
-                        {text: job.description, text70: true, grey20: true}
-                    ]}
-                    paddingH-10
-                    paddingB-10
-                />
-            </Card>
-            
             <CurrentStatus state_history={job.state_history} />
 
             <Card marginV-10 >

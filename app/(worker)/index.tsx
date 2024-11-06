@@ -21,7 +21,7 @@ export default function WorkerHomeScreen() {
             <Card
                 row centerV marginB-10 padding-10
                 style={{ width: '100%', maxWidth: 500, maxHeight: 200, borderWidth: 1, borderColor: Colors.grey50 }}
-                onPress={() => router.push('pool')}
+                onPress={() => router.push('/(worker)/pool')}
             >
                 <View padding-10 paddingR-15>
                     <MaterialCommunityIcons name="plus" size={25}/>
