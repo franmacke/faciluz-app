@@ -17,7 +17,7 @@ export default function JobScreen() {
         <View flex centerH>
             { loading && <Text>Loading...</Text> }
             { error && <Text>{ error.message }</Text> }
-            { response && <Job {...response} /> }
+            { response && <Job job={response} /> }
         </View>
     );
 }

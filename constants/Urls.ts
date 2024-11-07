@@ -20,6 +20,7 @@ export default {
         state_history: BASE_URL + 'jobs/state-history/',
         states: BASE_URL + 'jobs/states/',
         pool: BASE_URL + 'jobs/pool/',
+        validate: BASE_URL + 'jobs/validation/',
     },
     clients: {
         list: BASE_URL + "profiles/clients/",

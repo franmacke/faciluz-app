@@ -1,8 +1,8 @@
 import Urls from "@/constants/Urls";
 import { useFetch } from "@/hooks/useFetch";
 import { ClientProps } from "@/props/ClientProps";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Avatar, Card, Colors, LoaderScreen, Text, View } from "react-native-ui-lib";
+import AddressInfo from "../AddressInfo";
 
 
 export default function ClientInfo({ client_id }: { client_id: number | undefined }) {
@@ -72,29 +72,7 @@ export default function ClientInfo({ client_id }: { client_id: number | undefine
                     paddingH-5
                 />
             </View>
-            <View flex row centerV gap-10 paddingH-10>
-                <View
-                    style={{ paddingHorizontal: 10, borderRadius: 50, backgroundColor: Colors.red60, height: 50, width: 50, flexShrink: 1, justifyContent: "center", alignItems: "center" }} 
-
-                >
-                    <MaterialCommunityIcons 
-                        name="map-marker" 
-                        size={30} 
-                        color={Colors.red10} 
-                    />
-                </View>
-                { loading ? <LoaderScreen style={{ minHeight: 100 }}/> :
-                    <Card.Section
-                        content={[
-                            {text: client?.address.address_name + " " + client?.address.street_number + ", " + client?.address.neiborhood, text70BO: true},
-                            {text: client?.address.floor + " " + client?.address.door_number, text70: true, grey20: true},
-                        ]}
-                        paddingV-10
-                        paddingH-5
-                    />
-                }
-                
-            </View>
+            <AddressInfo address={client.address} />
         </Card>
     )
 }

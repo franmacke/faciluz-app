@@ -29,7 +29,7 @@ export default function WorkflowScreen() {
         <View flex style={styles.container}>
             { loading && <LoaderScreen message="Cargando" /> }
             { error && <Text>{ error.message }</Text> }
-            { response && <Job {...response} /> }
+            { response && <Job job={response}/> }
         </View>
     );
 }
